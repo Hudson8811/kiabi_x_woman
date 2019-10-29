@@ -9,7 +9,7 @@ a{
 	text-decoration: none;
 }
 html{
-	height: 100%;
+	width: 100%;
 }
 
 body{
@@ -18,7 +18,8 @@ body{
 	margin: 0;
 	font-size: 1vw;
 	background: #000012;
-	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 .container{
@@ -27,6 +28,7 @@ body{
 
 .wrapper{
 	overflow: hidden;
+	width: 100%;
 }
 
 .text-style{
@@ -68,6 +70,7 @@ body{
 	line-height: 0.8;
 	display: block;
 	position: relative;
+	user-select: none;
 }
 .js-marquee{
 	float: none !important;
@@ -79,33 +82,33 @@ body{
 }
 
 
+.woman{
+	width: vw(167);
+	display: block;
+	position: fixed;
+	left: vw(43);
+	top: vw(44);
+	z-index: 10;
+	img{
+		display: block;
+		width: 100%;
+	}
+}
+.kiabi{
+	width: vw(132);
+	display: block;
+	position: fixed;
+	right: vw(55);
+	top: vw(44);
+	z-index: 10;
+	img{
+		display: block;
+		width: 100%;
+	}
+}
 
 .section-1{
 	position: relative;
-	.woman{
-		width: vw(167);
-		display: block;
-		position: absolute;
-		left: vw(43);
-		top: vw(44);
-		img{
-			display: block;
-			width: 100%;
-		}
-	}
-	.kiabi{
-		width: vw(132);
-		display: block;
-		position: absolute;
-		right: vw(55);
-		top: vw(44);
-		img{
-			display: block;
-			width: 100%;
-		}
-	}
-
-
 
 	.container{
 		display: flex;
@@ -177,6 +180,140 @@ body{
 
 .section-2{
 	padding-top: vw(110);
+	padding-bottom: vw(110);
+	.step{
+		width: vw(1343);
+		&.step-1{
+			.block-title{
+				margin-bottom: vw(40);
+			}
+			.how-flex{
+				display: flex;
+				.how{
+					.img{
+						display: block;
+						width: vw(44);
+						height: vw(44);
+						img{
+							display: block;
+							width: 100%;
+							height: 100%;
+							object-fit: contain;
+						}
+					}
+					.big{
+						margin-top: vw(20);
+						color: #ffffff;
+						font-size: vw(38);
+						font-weight: 700;
+						text-transform: uppercase;
+					}
+					.small{
+						color: #ffffff;
+						font-size: vw(26);
+						line-height: vw(32);
+					}
+					+.how{
+						margin-left: vw(96);
+						position: relative;
+						&::before{
+							content: "";
+							display: block;
+							width: vw(16);
+							height: vw(28);
+							background: url("../img/arr-h.png") center center no-repeat;
+							background-size: contain;
+							position: absolute;
+							left: vw(-50);
+							top: vw(72);
+						}
+					}
+				}
+			}
+
+			.box{
+				margin-top: vw(35);
+				position: relative;
+				width: 100%;
+				box-sizing: border-box;
+				padding: vw(42);
+				overflow: hidden;
+				.marquee{
+					position: absolute;
+					width: 100%;
+				}
+				.marquee-1{
+					left: vw(42);
+					top: 0;
+					z-index: 1;
+				}
+				.marquee-2{
+					transform: rotate(90deg);
+					transform-origin: right  top;
+					left: 0;
+					bottom: 0;
+					z-index: 2;
+				}
+				.marquee-3{
+					transform: rotate(180deg);
+					right: vw(42);
+					bottom: 0;
+					z-index: 3;
+				}
+				.marquee-4{
+					transform: rotate(-90deg);
+					transform-origin: left  top;
+					left: 0;
+					bottom: 0;
+					z-index: 3;
+				}
+
+				.flex-block{
+					box-sizing: border-box;
+					display: flex;
+					justify-content: space-around;
+					padding: vw(100) vw(20);
+					.item{
+						text-align: center;
+						line-height: 32px;
+						.label{
+							margin-top: vw(20);
+							color: #ffffff;
+							font-size: vw(38);
+							font-weight: 700;
+							text-transform: uppercase;
+						}
+						.text{
+							color: #ffffff;
+							font-size: vw(26);
+							line-height: vw(32);
+						}
+					}
+				}
+			}
+
+			.btn-light{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				color: #e41529;
+				font-size: vw(32);
+				line-height: 1;
+				font-weight: 700;
+				text-transform: uppercase;
+				width: vw(306);
+				height: vw(82);
+				background-color: #ffffff;
+				margin: vw(44) auto 0;
+				transition: all 0.2s ease;
+				&:hover{
+					background-color: #e41529;
+					color: #ffffff;
+				}
+			}
+		}
+	}
 }
 
 
@@ -355,6 +492,6 @@ body{
 	.text{
 		text-align: center;
 		color: #ffffff;
-		font-size: 21px;
+		font-size: vw(21);
 	}
 }

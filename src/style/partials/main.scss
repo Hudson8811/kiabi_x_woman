@@ -1,4 +1,6 @@
-$font1: "Roboto", sans-serif;
+$font1: "Futura PT", sans-serif;
+$font2: 'Futura PT Demi';
+$font3: 'beer money';
 $resolution: 1920;
 $resolution2: 768;
 
@@ -11,15 +13,143 @@ html{
 }
 
 body{
-	color: #000;
+	color: #ffffff;
 	font-family: $font1;
 	margin: 0;
 	font-size: 1vw;
-	background: #ffffff;
+	background: #000012;
 	height: 100%;
 }
 
 .container{
-	margin: 0 auto;
+	margin: 0 0 0 vw(274);
+}
+
+.wrapper{
+	overflow: hidden;
+}
+
+.text-style{
+	color: #ffffff;
+	font-size: vw(26);
+	font-weight: 400;
+	line-height: vw(32.4);
+	p{
+		+p{
+			margin-top: 1em;
+		}
+	}
+}
+
+.marquee{
+	color: #ffffff;
+	font-size: vw(21);
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 0.8;
+	display: block;
 	position: relative;
 }
+.js-marquee{
+	float: none !important;
+	padding: vw(14) 0;
+	background: #e41529;
+}
+.js-marquee-wrapper{
+	display: flex;
+}
+
+.section-1{
+	position: relative;
+	.woman{
+		width: vw(167);
+		display: block;
+		position: absolute;
+		left: vw(43);
+		top: vw(44);
+		img{
+			display: block;
+			width: 100%;
+		}
+	}
+	.kiabi{
+		width: vw(132);
+		display: block;
+		position: absolute;
+		right: vw(55);
+		top: vw(44);
+		img{
+			display: block;
+			width: 100%;
+		}
+	}
+
+
+
+	.container{
+		display: flex;
+		align-items: flex-start;
+		.left{
+			margin-top: vw(130);
+			.title{
+				width: vw(724);
+				span{
+					color: #ffffff;
+					font-size: vw(144);
+					font-weight: 700;
+					letter-spacing: vw(1.59);
+					line-height: 0.8;
+					display: block;
+					&:first-child{
+						text-align: left;
+						position: relative;
+						&::before{
+							content: "";
+							display: block;
+							width: vw(119);
+							height: vw(201);
+							position: absolute;
+							left: vw(170);
+							top: vw(-70);
+							background: url("../img/stx.png") center top no-repeat;
+							background-size: contain;
+						}
+					}
+					&:last-child{
+						text-align: right;
+					}
+				}
+			}
+			.text{
+				margin-top: vw(35);
+				width: vw(640);
+			}
+		}
+		.right{
+			width: vw(642);
+			margin-left: vw(59);
+			.img{
+				display: block;
+				width: 100%
+			}
+		}
+	}
+
+	.lines{
+		position: absolute;
+		bottom: vw(65);
+		left: 0;
+		width: 100%;
+	}
+	.marquee-1{
+		transform: rotate(3.5deg);
+		z-index: 1;
+
+	}
+	.marquee-2{
+		transform: rotate(-5deg);
+		z-index: 2;
+	}
+}
+
+

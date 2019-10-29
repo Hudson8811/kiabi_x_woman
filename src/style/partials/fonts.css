@@ -1,35 +1,65 @@
 @font-face {
-    font-family: 'Roboto';
-    src: local('Roboto'), local('Roboto-Regular'),
-    url('../fonts/Roboto-Regular.woff2') format('woff2'),
-    url('../fonts/Roboto-Regular.woff') format('woff');
+    font-family: 'Futura PT';
+    src: local('Futura PT Book'), local('FuturaPT-Book'),
+    url('../fonts/FuturaPT-Book.woff2') format('woff2'),
+    url('../fonts/FuturaPT-Book.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
+
 @font-face {
-    font-family: 'Roboto';
-    src: local('Roboto Medium'), local('Roboto-Medium'),
-    url('../fonts/Roboto-Medium.woff2') format('woff2'),
-    url('../fonts/Roboto-Medium.woff') format('woff');
+    font-family: 'Futura PT';
+    src: local('Futura PT Light'), local('FuturaPT-Light'),
+    url('../fonts/FuturaPT-Light.woff2') format('woff2'),
+    url('../fonts/FuturaPT-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura PT';
+    src: local('Futura PT Medium'), local('FuturaPT-Medium'),
+    url('../fonts/FuturaPT-Medium.woff2') format('woff2'),
+    url('../fonts/FuturaPT-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: local('Roboto Bold'), local('Roboto-Bold'),
-    url('../fonts/Roboto-Bold.woff2') format('woff2'),
-    url('../fonts/Roboto-Bold.woff') format('woff');
-    font-weight: bold;
+    font-family: 'Futura PT';
+    src: local('Futura PT Bold'), local('FuturaPT-Bold'),
+    url('../fonts/FuturaPT-Bold.woff2') format('woff2'),
+    url('../fonts/FuturaPT-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Futura PT Extra';
+    src: local('Futura PT Extra Bold'), local('FuturaPT-ExtraBold'),
+    url('../fonts/FuturaPT-ExtraBold.woff2') format('woff2'),
+    url('../fonts/FuturaPT-ExtraBold.woff') format('woff');
+    font-weight: 800;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Lays';
-    src: local('Lays Bold'), local('Lays-Bold'),
-    url('../fonts/Lays-Bold.woff2') format('woff2'),
-    url('../fonts/Lays-Bold.woff') format('woff');
-    font-weight: bold;
+    font-family: 'Futura PT Demi';
+    src: local('Futura PT Demi'), local('FuturaPT-Demi'),
+    url('../fonts/FuturaPT-Demi.woff2') format('woff2'),
+    url('../fonts/FuturaPT-Demi.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'beer money';
+    src: local('beer money'), local('beermoney'),
+    url('../fonts/beermoney.woff2') format('woff2'),
+    url('../fonts/beermoney.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
 }

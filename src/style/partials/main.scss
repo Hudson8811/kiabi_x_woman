@@ -1,0 +1,25 @@
+$font1: "Roboto", sans-serif;
+$resolution: 1920;
+$resolution2: 768;
+
+
+a{
+	text-decoration: none;
+}
+html{
+	height: 100%;
+}
+
+body{
+	color: #000;
+	font-family: $font1;
+	margin: 0;
+	font-size: 1vw;
+	background: #ffffff;
+	height: 100%;
+}
+
+.container{
+	margin: 0 auto;
+	position: relative;
+}

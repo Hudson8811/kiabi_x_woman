@@ -72,4 +72,25 @@ $(document).ready(function() {
 
     });
 
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        releaseOnEdges: true,
+        touchReleaseOnEdges: true,
+        navigation: {
+            nextEl: '.button-next',
+            prevEl: '.button-prev',
+        },
+        on:{
+            reachBeginning: function () {
+            },
+            reachEnd: function () {
+            },
+            fromEdge: function () {
+            },
+            resize: function () {
+            }
+        }
+    });
+
 });

@@ -31,15 +31,34 @@ body{
 
 .text-style{
 	color: #ffffff;
-	font-size: vw(26);
 	font-weight: 400;
-	line-height: vw(32.4);
+	line-height: vw(36);
+	font-size: vw(30);
 	p{
 		+p{
 			margin-top: 1em;
 		}
 	}
+	a{
+		color: #ffffff;
+		background-color: #e41529;
+		cursor: pointer;
+	}
 }
+
+.block-title{
+	color: #ffffff;
+	font-size: vw(66);
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 0.8;
+}
+.block-subtitle{
+	color: #ffffff;
+	font-size: vw(42);
+	font-weight: 700;
+}
+
 
 .marquee{
 	color: #ffffff;
@@ -58,6 +77,8 @@ body{
 .js-marquee-wrapper{
 	display: flex;
 }
+
+
 
 .section-1{
 	position: relative;
@@ -123,6 +144,8 @@ body{
 			.text{
 				margin-top: vw(35);
 				width: vw(640);
+				font-size: vw(26);
+				line-height: vw(32.4);
 			}
 		}
 		.right{
@@ -152,4 +175,104 @@ body{
 	}
 }
 
+.section-2{
+	padding-top: vw(110);
+}
 
+
+.section-3{
+	position: relative;
+	padding-top: vw(100);
+
+	.block-title{
+		position: relative;
+		margin-bottom: vw(55);
+		&::before{
+			content: "";
+			display: block;
+			width: vw(66);
+			height: vw(113);
+			position: absolute;
+			left: vw(70);
+			top: vw(-65);
+			background: url("../img/stx.png") center top no-repeat;
+			background-size: contain;
+		}
+	}
+	.text-1{
+		width: vw(925);
+	}
+	.block-subtitle{
+		width: vw(980);
+		margin-top: vw(30);
+		margin-bottom: vw(30);
+	}
+	.flex-block{
+		display: flex;
+		align-items: flex-start;
+		.left{
+			position: relative;
+			z-index: 4;
+			width: vw(585);
+			.img{
+				margin-top: vw(220);
+				width: vw(576);
+				img{
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		.right{
+			width: vw(624);
+			margin-top: vw(63);
+			margin-left: vw(97);
+			position: relative;
+			z-index: 2;
+			.img{
+				width: 100%;
+				img{
+					width: 100%;
+					display: block;
+				}
+			}
+		}
+	}
+
+	.lines{
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: vw(350);
+
+	}
+	.marquee{
+		font-size: 20px;
+		.js-marquee{
+			padding: vw(20) 0 vw(8);
+		}
+		span{
+			position: relative;
+			&::before{
+				content: "";
+				display: block;
+				width: vw(23);
+				height: vw(36);
+				position: absolute;
+				left: vw(20);
+				top: vw(-15);
+				background: url("../img/stxb.png") center top no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+	.marquee-1{
+		transform: rotate(3.5deg);
+		z-index: 1;
+
+	}
+	.marquee-2{
+		transform: rotate(-6deg);
+		z-index: 3;
+	}
+}

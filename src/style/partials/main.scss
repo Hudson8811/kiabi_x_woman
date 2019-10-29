@@ -186,6 +186,19 @@ body{
 	padding-bottom: vw(110);
 	.step{
 		width: vw(1343);
+		.box-solid{
+			position: relative;
+			width: 100%;
+			min-height: vw(733);
+			box-sizing: border-box;
+			border: vw(34) solid #e41529;
+			overflow: hidden;
+			.inner-box{
+				box-sizing: border-box;
+				width: 100%;
+				padding: vw(42);
+			}
+		}
 		&.step-1{
 			.block-title{
 				margin-bottom: vw(40);
@@ -313,6 +326,101 @@ body{
 				&:hover{
 					background-color: #e41529;
 					color: #ffffff;
+				}
+			}
+		}
+		&.steps{
+			user-select: none;
+			.box-solid{
+				.inner-box{
+					.step-2{
+						text-align: center;
+						.title{
+							color: #ffffff;
+							font-size: vw(38);
+							font-weight: 700;
+							text-transform: uppercase;
+						}
+						.text{
+							font-size: 26px;
+							line-height: 32.4px;
+							margin-top: vw(10);
+						}
+						.countdown{
+							color: #ffffff;
+							font-size: vw(120);
+							line-height: 0.8;
+							font-weight: 700;
+							margin-top: vw(145);
+							text-transform: uppercase;
+						}
+					}
+					.step-3{
+						text-align: center;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						user-select: none;
+						.timer{
+							color: #ffffff;
+							font-size: vw(120);
+							font-weight: 700;
+							text-transform: uppercase;
+							position: relative;
+							&::before{
+								content: "";
+								display: block;
+								width: vw(37);
+								height: vw(43);
+								position: absolute;
+								left: vw(-57);
+								top: 50%;
+								margin-top: vw(-21);
+								background: url("../img/h2.png") center center no-repeat;
+								background-size: contain;
+							}
+						}
+						.question{
+							margin-top: vw(50);
+							width: vw(725);
+							.number{
+								color: #ffffff;
+								font-size: vw(26);
+								margin-bottom: 1em;
+							}
+							.text{
+								color: #ffffff;
+								font-size: vw(32);
+								text-transform: uppercase;
+								font-weight: 700;
+								min-height: vw(160);
+							}
+						}
+						.btns{
+							width: vw(725);
+							margin-top: vw(10);
+							display: flex;
+							justify-content: space-between;
+							button{
+								border: none;
+								cursor: pointer;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								width: vw(290);
+								height: vw(86);
+								background: transparent;
+								color: #ffffff;
+								font-size: vw(32);
+								font-weight: 700;
+								text-transform: uppercase;
+								transition: 0.2s ease;
+								&:hover{
+									background-color: #e41529;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

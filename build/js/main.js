@@ -102,6 +102,9 @@ $(document).ready(function() {
         function displayTime(){
             var c=end-now();
             out.textContent=ms2TimeString(c>0?(raf(displayTime),c):0);
+            if (c<=0){
+                testEnd();
+            }
         }
         function go(){
             end=now()+duration;
@@ -122,12 +125,33 @@ $(document).ready(function() {
 
     function testStart() {
         timer();
+
+    }
+
+    function testEnd() {
+        $('.step-3').fadeOut(100,function () {
+            $('.step-4').fadeIn(100, function () {
+                $('#getScore').click(function () {
+                    $('.step-4').fadeOut(300,function () {
+                        $('.step-5').fadeIn(300, function (){
+                            $('.pagi a').click(function () {
+                                goPage(this);
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+
+    function goPage(elem){
+
     }
 
 
     function endCountdown() {
-        $('.step-2').fadeOut(300,function () {
-           $('.step-3').css("display", "flex").hide().fadeIn(300, function () {
+        $('.step-2').fadeOut(100,function () {
+           $('.step-3').css("display", "flex").hide().fadeIn(100, function () {
                testStart();
            });
         });
@@ -147,6 +171,10 @@ $(document).ready(function() {
 
     $('.step-1 .btn-light').click(function () {
         event.preventDefault();
+        $('html,body').animate({
+                scrollTop: $('.section-2').offset().top
+            }, 500
+        );
         $('.step-1').fadeOut(500,function () {
             $('.steps').fadeIn(500);
             timer3 = setInterval(function() { handleTimer(count); }, 1000);

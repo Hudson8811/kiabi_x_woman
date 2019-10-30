@@ -291,7 +291,7 @@ body{
 					padding: vw(100) vw(20);
 					.item{
 						text-align: center;
-						line-height: 32px;
+						line-height: vw(32);
 						.label{
 							margin-top: vw(20);
 							color: #ffffff;
@@ -343,8 +343,8 @@ body{
 							text-transform: uppercase;
 						}
 						.text{
-							font-size: 26px;
-							line-height: 32.4px;
+							font-size: vw(26);
+							line-height: vw(32.4);
 							margin-top: vw(10);
 						}
 						.countdown{
@@ -418,6 +418,7 @@ body{
 								font-weight: 700;
 								text-transform: uppercase;
 								transition: 0.2s ease;
+								font-family: $font1;
 								&:hover{
 									background-color: #e41529;
 								}
@@ -445,7 +446,7 @@ body{
 								height: vw(142);
 								color: #ffffff;
 								.label{
-									font-size: 26px;
+									font-size: vw(26);
 									a{
 										color: #ffffff;
 										text-decoration: underline;
@@ -529,13 +530,13 @@ body{
 									th{
 										text-align: left;
 										color: #ffffff;
-										font-size: 21px;
+										font-size: vw(21);
 										font-weight: 400;
 									}
 									td{
 										text-align: left;
 										color: #ffffff;
-										font-size: 30px;
+										font-size: vw(30);
 										padding: vw(13) 0;
 										&:nth-child(1){
 											font-weight: 700;
@@ -656,7 +657,7 @@ body{
 
 	}
 	.marquee{
-		font-size: 20px;
+		font-size: vw(20);
 		.js-marquee{
 			padding: vw(20) 0 vw(8);
 		}
@@ -705,7 +706,7 @@ body{
 			.swiper-slide{
 				margin-right: vw(100);
 				margin-left: vw(74);
-				transition: 0.2s ease;
+				transition: 0.8s ease;
 				width: auto;
 				.inner-flex{
 					display: flex;
@@ -713,7 +714,7 @@ body{
 					.left{
 						width: vw(624);
 						height: vw(936);
-						transition: 0.2s ease;
+						transition: 0.8s ease;
 						img{
 							width: 100%;
 							height: 100%;
@@ -733,12 +734,14 @@ body{
 						font-weight: 400;
 						line-height: vw(36);
 						font-size: vw(30);
-						transition: 0.2s ease;
+						transition: 0.8s ease;
 						overflow: hidden;
 						.title{
 							font-weight: 700;
+							width: vw(242);
 						}
 						.text{
+							width: vw(242);
 							margin-top: 1em;
 							p{
 								+p{
@@ -882,7 +885,7 @@ body{
 			vertical-align: middle;
 			margin-left: vw(15);
 			color: #ffffff;
-			font-size: 30px;
+			font-size: vw(30);
 		}
 		&:hover{
 			img{

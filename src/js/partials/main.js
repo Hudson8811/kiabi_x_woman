@@ -4,7 +4,7 @@ $(document).ready(function() {
         duration: 15000,
         gap: 0,
         delayBeforeStart: 0,
-        direction: 'left',
+        direction: 'right',
         duplicated: true,
         startVisible:true
 
@@ -150,6 +150,7 @@ $(window).on('load', function() {
         spaceBetween: 0,
         releaseOnEdges: true,
         touchReleaseOnEdges: true,
+        speed: 800,
         navigation: {
             nextEl: '.button-next',
             prevEl: '.button-prev',

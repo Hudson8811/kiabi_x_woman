@@ -61,10 +61,43 @@ $(document).ready(function() {
         go();
     }
 
-    function testStart() {
-        timer();
+    currentQuestion = 1;
+    countQuestions = 1;
+    quests = '';
 
+    function testStart() {
+        $.getJSON('test.json', function(data) {
+            quests = data;
+            countQuestions = quests.test.length;
+            $('#current').html(currentQuestion);
+
+            questId = quests.test[0].id;
+            var quest = quests.test[0].quest;
+            $('.question .text').html(quest);
+        });
+        timer();
     }
+    
+    function nextQuest() {
+        currentQuestion++;
+        if (currentQuestion <= countQuestions){
+            $('#current').html(currentQuestion);
+            var quest = quests.test[currentQuestion-1].quest;
+            $('.question .text').html(quest);
+        } else {
+            testEnd();
+        }
+    }
+
+    $('.step-3 .btns button').click(function () {
+        var ans = 0;
+        if ($(this).hasClass('no-btn')){
+            ans = 0;
+        } else {
+            ans = 1;
+        }
+        nextQuest();
+    });
 
     function testEnd() {
         $('.step-3').fadeOut(100,function () {

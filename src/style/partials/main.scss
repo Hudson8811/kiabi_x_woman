@@ -2,7 +2,7 @@ $font1: "Futura PT", sans-serif;
 $font2: 'Futura PT Demi';
 $font3: 'beer money';
 $resolution: 1920;
-$resolution2: 768;
+$resolution2: 320;
 
 
 a{
@@ -27,6 +27,10 @@ body{
 
 .container{
 	margin: 0 0 0 vw(274);
+	@include media((
+					margin: (md: 0),
+					padding: (md: 0 vw2(20)),
+	));
 }
 
 .wrapper{
@@ -39,6 +43,10 @@ body{
 	font-weight: 400;
 	line-height: vw(36);
 	font-size: vw(30);
+	@include media((
+					line-height: (md: 1.2),
+					font-size: (md: vw2(16)),
+	));
 	p{
 		+p{
 			margin-top: 1em;
@@ -57,13 +65,19 @@ body{
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 0.8;
+	@include media((
+					font-size: (md: vw2(40)),
+					line-height: (md: 1.2),
+	));
 }
 .block-subtitle{
 	color: #ffffff;
 	font-size: vw(42);
 	font-weight: 700;
+	@include media((
+					font-size: (md: vw2(22)),
+	));
 }
-
 
 .marquee{
 	color: #ffffff;
@@ -74,11 +88,17 @@ body{
 	display: block;
 	position: relative;
 	user-select: none;
+	@include media((
+					font-size: (md: vw2(12)),
+	));
 }
 .js-marquee{
 	float: none !important;
 	padding: vw(14) 0;
 	background: #e41529;
+	@include media((
+					padding: (md: vw2(8)),
+	));
 }
 .js-marquee-wrapper{
 	display: flex;
@@ -92,6 +112,12 @@ body{
 	left: vw(43);
 	top: vw(44);
 	z-index: 10;
+	@include media((
+					position: (md: absolute),
+					left: (md: vw2(20)),
+					top: (md: vw2(20)),
+					width: (md: vw2(87)),
+	));
 	img{
 		display: block;
 		width: 100%;
@@ -104,6 +130,12 @@ body{
 	right: vw(55);
 	top: vw(44);
 	z-index: 10;
+	@include media((
+					position: (md: absolute),
+					right: (md: vw2(20)),
+					top: (md: vw2(20)),
+					width: (md: vw2(62)),
+	));
 	img{
 		display: block;
 		width: 100%;
@@ -112,14 +144,25 @@ body{
 
 .section-1{
 	position: relative;
-
+	@include media((
+		padding-top: (md: vw2(90))
+	));
 	.container{
 		display: flex;
 		align-items: flex-start;
+		@include media((
+						display: (md: block),
+		));
 		.left{
 			margin-top: vw(130);
+			@include media((
+							margin-top: (md: 0),
+			));
 			.title{
 				width: vw(724);
+				@include media((
+								width: (md: 100%),
+				));
 				span{
 					color: #ffffff;
 					font-size: vw(144);
@@ -127,6 +170,10 @@ body{
 					letter-spacing: vw(1.59);
 					line-height: 0.8;
 					display: block;
+					@include media((
+									font-size: (md: vw2(55)),
+									letter-spacing: (md: vw2(1.58)),
+					));
 					&:first-child{
 						text-align: left;
 						position: relative;
@@ -140,6 +187,12 @@ body{
 							top: vw(-70);
 							background: url("../img/stx.png") center top no-repeat;
 							background-size: contain;
+							@include media((
+											width: (md: vw2(46)),
+											height: (md: vw2(77)),
+											left: (md: vw2(69)),
+											top: (md: vw2(-30)),
+							));
 						}
 					}
 					&:last-child{
@@ -147,19 +200,35 @@ body{
 					}
 				}
 			}
+
 			.text{
 				margin-top: vw(35);
 				width: vw(640);
 				font-size: vw(26);
 				line-height: vw(32.4);
+				@include media((
+								display: (md: none)
+				));
 			}
 		}
+
 		.right{
 			width: vw(642);
 			margin-left: vw(59);
+			@include media((
+							width: (md: 100%),
+							height: (md: vw2(340)),
+							margin-left: (md: 0),
+							margin-top: (md: vw2(25)),
+			));
 			.img{
 				display: block;
-				width: 100%
+				width: 100%;
+				@include media((
+								height: (md: 100%),
+								object-fit: (md: cover),
+								object-position: (md: center vw2(-60)),
+				));
 			}
 		}
 	}
@@ -169,6 +238,9 @@ body{
 		bottom: vw(65);
 		left: 0;
 		width: 100%;
+		@include media((
+						bottom: (md: vw2(-10)),
+		));
 	}
 	.marquee-1{
 		transform: rotate(3.5deg);
@@ -181,11 +253,26 @@ body{
 	}
 }
 
+.section-1-2{
+	display: none;
+	margin-top: vw2(48);
+	@include media((
+					display: (md: block)
+	));
+}
+
 .section-2{
 	padding-top: vw(110);
 	padding-bottom: vw(110);
+	@include media((
+					padding-top: (md: vw2(50)),
+					padding-bottom: (md: vw2(35)),
+	));
 	.step{
 		width: vw(1343);
+		@include media((
+						width: (md: 100%),
+		));
 		.box-solid{
 			position: relative;
 			width: 100%;
@@ -193,23 +280,43 @@ body{
 			box-sizing: border-box;
 			border: vw(34) solid #e41529;
 			overflow: hidden;
+			@include media((
+							min-height: (md: vw2(401)),
+							border-width: (md: vw2(25)),
+							margin-left: (md: vw2(-20)),
+							margin-right: (md: vw2(-20)),
+							width: (md: calc(100% + (40/320) * 100vw)),
+			));
 			.inner-box{
 				box-sizing: border-box;
 				width: 100%;
 				padding: vw(42);
+				@include media((
+								padding: (md: vw2(20) vw2(5)),
+				));
 			}
 		}
 		&.step-1{
 			.block-title{
 				margin-bottom: vw(40);
+				@include media((
+								display: (md: vw2(30)),
+				));
 			}
 			.how-flex{
 				display: flex;
+				@include media((
+								display: (md: block),
+				));
 				.how{
 					.img{
 						display: block;
 						width: vw(44);
 						height: vw(44);
+						@include media((
+										width: (md: vw2(30)),
+										height: (md: vw2(30)),
+						));
 						img{
 							display: block;
 							width: 100%;
@@ -223,15 +330,27 @@ body{
 						font-size: vw(38);
 						font-weight: 700;
 						text-transform: uppercase;
+						@include media((
+										margin-top: (md: vw2(8)),
+										font-size: (md: vw2(25)),
+						));
 					}
 					.small{
 						color: #ffffff;
 						font-size: vw(26);
 						line-height: vw(32);
+						@include media((
+										font-size: (md: vw2(16)),
+										line-height: (md: 1.2),
+						));
 					}
 					+.how{
 						margin-left: vw(96);
 						position: relative;
+						@include media((
+										margin-left: (md: 0),
+										margin-top: (md: vw2(62)),
+						));
 						&::before{
 							content: "";
 							display: block;
@@ -242,6 +361,13 @@ body{
 							position: absolute;
 							left: vw(-50);
 							top: vw(72);
+							@include media((
+											left: (md: vw2(0)),
+											top: (md: vw2(-38)),
+											width: (md: vw2(20)),
+											height: (md: vw2(14)),
+											background-image: (md: url("../img/arr-h2.png")),
+							));
 						}
 					}
 				}
@@ -254,6 +380,10 @@ body{
 				box-sizing: border-box;
 				padding: vw(42);
 				overflow: hidden;
+				@include media((
+								margin-top: (md: vw2(28)),
+								padding: (md: vw2(26)),
+				));
 				.marquee{
 					position: absolute;
 					width: 100%;
@@ -262,6 +392,9 @@ body{
 					left: vw(42);
 					top: 0;
 					z-index: 1;
+					@include media((
+									left: (md: vw2(26)),
+					));
 				}
 				.marquee-2{
 					transform: rotate(90deg);
@@ -275,6 +408,9 @@ body{
 					right: vw(42);
 					bottom: 0;
 					z-index: 3;
+					@include media((
+									right: (md: vw2(26)),
+					));
 				}
 				.marquee-4{
 					transform: rotate(-90deg);
@@ -289,20 +425,39 @@ body{
 					display: flex;
 					justify-content: space-around;
 					padding: vw(100) vw(20);
+					@include media((
+									padding: (md: vw2(45) vw2(10) vw2(45)),
+									display: (md: block),
+					));
 					.item{
 						text-align: center;
 						line-height: vw(32);
+						@include media((
+										line-height: (md: 1.2),
+						));
+						+.item{
+							@include media((
+											margin-top: (md: vw2(42)),
+							));
+						}
 						.label{
-							margin-top: vw(20);
 							color: #ffffff;
 							font-size: vw(38);
 							font-weight: 700;
 							text-transform: uppercase;
+							margin-bottom: vw(5);
+							@include media((
+											font-size: (md: vw2(25)),
+							));
 						}
 						.text{
 							color: #ffffff;
 							font-size: vw(26);
 							line-height: vw(32);
+							@include media((
+											font-size: (md: vw2(16)),
+											line-height: (md: 1.2),
+							));
 						}
 					}
 				}
@@ -323,6 +478,12 @@ body{
 				background-color: #ffffff;
 				margin: vw(44) auto 0;
 				transition: all 0.2s ease;
+				@include media((
+								font-size: (md: vw2(25)),
+								width: (md: vw2(231)),
+								height: (md: vw2(56)),
+								margin-top: (md: vw2(39)),
+				));
 				&:hover{
 					background-color: #e41529;
 					color: #ffffff;
@@ -341,11 +502,24 @@ body{
 							font-size: vw(38);
 							font-weight: 700;
 							text-transform: uppercase;
+							@include media((
+											font-size: (md: vw2(22)),
+							));
 						}
 						.text{
 							font-size: vw(26);
 							line-height: vw(32.4);
 							margin-top: vw(10);
+							@include media((
+											font-size: (md: vw2(16)),
+											line-height: (md: 1.2),
+											margin-top: (md: vw2(10)),
+							));
+							br{
+								@include media((
+												display: (md:none),
+								));
+							}
 						}
 						.countdown{
 							color: #ffffff;
@@ -354,6 +528,10 @@ body{
 							font-weight: 700;
 							margin-top: vw(145);
 							text-transform: uppercase;
+							@include media((
+											font-size: (md: vw2(55)),
+											margin-top: (md: vw2(70)),
+							));
 						}
 					}
 					.step-3{
@@ -370,6 +548,11 @@ body{
 							position: relative;
 							width: vw(500);
 							text-align: left;
+							@include media((
+											font-size: (md: vw2(22)),
+											width: (md: vw2(83)),
+											padding-left: (md: vw2(32)),
+							));
 							&::before{
 								content: "";
 								display: block;
@@ -381,15 +564,28 @@ body{
 								margin-top: vw(-21);
 								background: url("../img/h2.png") center center no-repeat;
 								background-size: contain;
+								@include media((
+												left: (md: 0),
+												width: (md: vw2(21)),
+												height: (md: vw2(26)),
+												margin-top: (md: vw2(-13)),
+								));
 							}
 						}
 						.question{
 							margin-top: vw(50);
 							width: vw(725);
+							@include media((
+											margin-top: (md: vw2(58)),
+											width: (md: vw2(205)),
+							));
 							.number{
 								color: #ffffff;
 								font-size: vw(26);
 								margin-bottom: 1em;
+								@include media((
+												font-size: (md: vw2(16)),
+								));
 							}
 							.text{
 								color: #ffffff;
@@ -397,6 +593,10 @@ body{
 								text-transform: uppercase;
 								font-weight: 700;
 								min-height: vw(160);
+								@include media((
+												font-size: (md: vw2(16)),
+												min-height: (md: vw2(120)),
+								));
 							}
 						}
 						.btns{
@@ -404,6 +604,10 @@ body{
 							margin-top: vw(10);
 							display: flex;
 							justify-content: space-between;
+							@include media((
+											width: (md: vw2(205)),
+											margin-top: (md: vw2(12)),
+							));
 							button{
 								border: none;
 								cursor: pointer;
@@ -419,8 +623,16 @@ body{
 								text-transform: uppercase;
 								transition: 0.2s ease;
 								font-family: $font1;
+								@include media((
+												width: (md: auto),
+												height: (md: auto),
+												font-size: (md: vw2(22)),
+								));
 								&:hover{
 									background-color: #e41529;
+									@include media((
+													background-color: (md: transparent),
+									));
 								}
 							}
 						}
@@ -433,20 +645,38 @@ body{
 							font-weight: 700;
 							text-align: center;
 							text-transform: uppercase;
+							@include media((
+											font-size: (md: vw2(22)),
+							));
 						}
 						.flex-block{
 							margin: vw(55) auto 0;
 							width: vw(898);
 							display: flex;
 							justify-content: space-between;
+							@include media((
+											margin-top: (md: vw2(19)),
+											width: (md: auto),
+											flex-direction: (md: column),
+											align-items: (md: center),
+							));
 							.left, .right{
 								box-sizing: border-box;
 								padding: vw(35) 0 0 vw(45);
 								background-color: #e41529;
 								height: vw(142);
 								color: #ffffff;
+								@include media((
+												padding: (md: vw2(9)vw2(14)),
+												height: (md: auto),
+												width: (md: auto),
+												text-align: (md: center),
+								));
 								.label{
 									font-size: vw(26);
+									@include media((
+													font-size: (md: vw2(16)),
+									));
 									a{
 										color: #ffffff;
 										text-decoration: underline;
@@ -459,6 +689,15 @@ body{
 									font-size: vw(32);
 									font-weight: 700;
 									text-transform: uppercase;
+									@include media((
+													font-size: (md: vw2(16)),
+									));
+									br{
+										display: none;
+										@include media((
+														display: (md: initial),
+										));
+									}
 								}
 							}
 							.left{
@@ -466,27 +705,43 @@ body{
 							}
 							.right{
 								width: vw(279);
+								@include media((
+												margin-top: (md: vw2(16)),
+								));
 							}
 						}
 						.share{
 							margin-top: vw(65);
 							text-align: center;
+							@include media((
+											margin-top: (md: vw2(38)),
+							));
 							.label{
 								color: #ffffff;
 								font-size: vw(38);
 								font-weight: 700;
 								text-transform: uppercase;
+								@include media((
+												font-size: (md: vw2(22)),
+								));
 							}
 							.text{
 								color: #ffffff;
 								font-size: vw(26);
 								margin-top: vw(10);
+								@include media((
+												font-size: (md: vw2(16)),
+												margin-top: (md: vw2(5)),
+								));
 							}
 							.social-block{
 								margin-top: vw(25);
 								display: flex;
 								justify-content: center;
 								align-items: center;
+								@include media((
+												margin-top: (md: vw2(11)),
+								));
 								.soc-link{
 									width: vw(71);
 									height: vw(71);
@@ -497,12 +752,23 @@ body{
 									border-radius: 100%;
 									color: #e41529;
 									transition: 0.2s ease;
+									@include media((
+													width: (md: vw2(40)),
+													height: (md: vw2(40)),
+									));
 									+.soc-link{
 										margin-left: vw(35);
+										@include media((
+														margin-left: (md: vw2(13)),
+										));
 									}
 									svg{
 										width: vw(36);
 										height: vw(36);
+										@include media((
+														width: (md: vw2(20)),
+														height: (md: vw2(20)),
+										));
 									}
 									&:hover{
 										color: #ffffff;
@@ -520,6 +786,14 @@ body{
 							font-size: vw(66);
 							text-transform: uppercase;
 							margin-bottom: vw(30);
+							font-weight: 700;
+							@include media((
+											font-size: (md: vw2(22)),
+											margin-bottom: (md: vw2(25)),
+											margin-left: (md: auto),
+											margin-right: (md: auto),
+											width: (md: vw2(165)),
+							));
 						}
 						.table{
 							table{
@@ -532,24 +806,58 @@ body{
 										color: #ffffff;
 										font-size: vw(21);
 										font-weight: 400;
+										vertical-align: top;
+										@include media((
+														font-size: (md: vw2(12)),
+														padding-right: (md: vw2(5)),
+										));
+										&:nth-child(4){
+											@include media((
+															padding-right: (md: 0),
+											));
+										}
+										br{
+											display: none;
+											@include media((
+															display: (md: initial),
+											));
+										}
 									}
 									td{
 										text-align: left;
 										color: #ffffff;
 										font-size: vw(30);
 										padding: vw(13) 0;
+										vertical-align: top;
+										@include media((
+														font-size: (md: vw2(16)),
+														padding: (md: vw2(7) vw2(12) vw2(7) 0),
+										));
 										&:nth-child(1){
 											font-weight: 700;
 											width: vw(100);
+											@include media((
+															width: (md: auto),
+											));
 										}
 										&:nth-child(2){
 											width: vw(520);
+											@include media((
+															width: (md: auto),
+											));
 										}
 										&:nth-child(3){
 											width: vw(135);
+											@include media((
+															width: (md: auto),
+											));
 										}
-										&:nth-child(3){
+										&:nth-child(4){
 											width: vw(175);
+											@include media((
+															width: (md: auto),
+															padding-right: (md: 0),
+											));
 										}
 									}
 								}
@@ -560,12 +868,22 @@ body{
 							justify-content: center;
 							align-items: center;
 							margin-top: vw(28);
+							flex-wrap: wrap;
+							@include media((
+											margin-top: (md: vw2(20)),
+							));
 							a{
 								color: #ffffff;
 								cursor: pointer;
 								font-size: vw(21);
+								@include media((
+												font-size: (md: vw2(20)),
+								));
 								+a{
 									margin-left: vw(12);
+									@include media((
+													margin-left: (md: vw2(15)),
+									));
 								}
 								&.active,&:hover{
 									color: #e41529;
@@ -576,6 +894,10 @@ body{
 									display: inline-block;
 									background: url("../img/arr-pagi.png") center center no-repeat;
 									background-size: contain;
+									@include media((
+													width: (md: vw2(19)),
+													height: (md: vw2(15)),
+									));
 									&.prev{
 										transform: scaleX(-1);
 									}
@@ -593,10 +915,15 @@ body{
 .section-3{
 	position: relative;
 	padding-top: vw(100);
-
+	@include media((
+					padding-top: (md: vw2(40)),
+	));
 	.block-title{
 		position: relative;
 		margin-bottom: vw(55);
+		@include media((
+						margin-bottom: (md: vw2(35)),
+		));
 		&::before{
 			content: "";
 			display: block;
@@ -607,26 +934,49 @@ body{
 			top: vw(-65);
 			background: url("../img/stx.png") center top no-repeat;
 			background-size: contain;
+			@include media((
+							width: (md: vw2(45)),
+							height: (md: vw2(77)),
+							left: (md: vw2(39)),
+							top: (md: vw2(-33)),
+			));
 		}
 	}
 	.text-1{
 		width: vw(925);
+		@include media((
+						width: (md: auto),
+		));
 	}
 	.block-subtitle{
 		width: vw(980);
 		margin-top: vw(30);
 		margin-bottom: vw(30);
+		@include media((
+						width: (md: auto),
+						margin-top: (md: vw2(20)),
+						margin-bottom: (md: vw2(20)),
+		));
 	}
 	.flex-block{
 		display: flex;
 		align-items: flex-start;
+		@include media((
+						display: (md: block),
+		));
 		.left{
 			position: relative;
 			z-index: 4;
 			width: vw(585);
+			@include media((
+							width: (md: auto),
+			));
 			.img{
 				margin-top: vw(220);
 				width: vw(576);
+				@include media((
+								display: (md: none),
+				));
 				img{
 					display: block;
 					width: 100%;
@@ -639,8 +989,16 @@ body{
 			margin-left: vw(97);
 			position: relative;
 			z-index: 2;
+			@include media((
+							width: (md: auto),
+							margin-top: (md: vw2(33)),
+							margin-left: (md: 0),
+			));
 			.img{
 				width: 100%;
+				@include media((
+								width: (md: 100%),
+				));
 				img{
 					width: 100%;
 					display: block;
@@ -654,12 +1012,20 @@ body{
 		left: 0;
 		width: 100%;
 		bottom: vw(350);
-
+		@include media((
+						bottom: (md: vw2(148)),
+		));
 	}
 	.marquee{
 		font-size: vw(20);
+		@include media((
+						font-size: (md: vw2(14)),
+		));
 		.js-marquee{
 			padding: vw(20) 0 vw(8);
+			@include media((
+							padding: (md: vw2(12) 0 vw2(6)),
+			));
 		}
 		span{
 			position: relative;
@@ -673,6 +1039,12 @@ body{
 				top: vw(-15);
 				background: url("../img/stxb.png") center top no-repeat;
 				background-size: contain;
+				@include media((
+								width: (md: vw2(15)),
+								height: (md: vw2(22)),
+								left: (md: vw2(14)),
+								top: (md: vw2(-8)),
+				));
 			}
 		}
 	}
@@ -684,17 +1056,30 @@ body{
 	.marquee-2{
 		transform: rotate(-6deg);
 		z-index: 3;
+		@include media((
+						top: (md: vw2(20)),
+						position: (md: relative),
+		));
 	}
 }
 
 
 .section-4{
 	padding-top: vw(110);
+	@include media((
+					padding-top: (md: vw2(76)),
+	));
 	.block-title{
 		margin-bottom: vw(55);
+		@include media((
+						margin-bottom: (md: vw2(22)),
+		));
 	}
 	.text-1{
 		width: vw(905);
+		@include media((
+						width: (md: auto),
+		));
 	}
 
 	.swiper-container{
@@ -702,19 +1087,35 @@ body{
 		box-sizing: border-box;
 		padding-left: vw(200);
 		margin-top: vw(75);
+		@include media((
+						margin-top: (md: vw2(37)),
+						padding-left: (md: vw2(20)),
+		));
 		.swiper-wrapper{
 			.swiper-slide{
 				margin-right: vw(100);
 				margin-left: vw(74);
 				transition: 0.8s ease;
 				width: auto;
+				@include media((
+								margin-right: (md: vw2(20)),
+								margin-left: (md: vw2(0)),
+				));
 				.inner-flex{
 					display: flex;
 					align-items: center;
+					@include media((
+									display: (md: block),
+									width: (md: vw2(261)),
+					));
 					.left{
 						width: vw(624);
 						height: vw(936);
 						transition: 0.8s ease;
+						@include media((
+										width: (md: 100%),
+										height: (md: auto),
+						));
 						img{
 							width: 100%;
 							height: 100%;
@@ -729,20 +1130,36 @@ body{
 						flex-direction: column;
 						justify-content: center;
 						height: vw(936);
-
 						color: #ffffff;
 						font-weight: 400;
 						line-height: vw(36);
 						font-size: vw(30);
 						transition: 0.8s ease;
 						overflow: hidden;
+						@include media((
+										padding-left: (md: 0),
+										width: (md: auto),
+										height: (md: auto),
+										line-height: (md: 1.2),
+										font-size: (md: vw2(16)),
+										margin-top: (md: vw2(14)),
+						));
 						.title{
 							font-weight: 700;
 							width: vw(242);
+							@include media((
+											width: (md: auto),
+											font-size: (md: vw2(22)),
+											order: (md: 2),
+							));
 						}
 						.text{
 							width: vw(242);
 							margin-top: 1em;
+							@include media((
+											width: (md: auto),
+											order: (md: 3),
+							));
 							p{
 								+p{
 									margin-top: 1em;
@@ -756,6 +1173,10 @@ body{
 							&.long{
 								font-size: vw(26);
 								line-height: vw(30);
+								@include media((
+												line-height: (md: 1.2),
+												font-size: (md: vw2(16)),
+								));
 							}
 						}
 						.control{
@@ -763,6 +1184,12 @@ body{
 							display: flex;
 							justify-content: space-between;
 							width: vw(167);
+							@include media((
+											margin-top: (md: 0),
+											margin-bottom: (md: vw2(16)),
+											width: (md: vw2(96)),
+											order: (md: 1),
+							));
 							>div{
 								cursor: pointer;
 								width: vw(61);
@@ -772,6 +1199,10 @@ body{
 								background-repeat: no-repeat;
 								background-size: contain;
 								transition: transform 0.2s ease;
+								@include media((
+												width: (md: vw2(39)),
+												height: (md: vw2(39)),
+								));
 								&:hover{
 									transform: scale(1.1);
 								}
@@ -786,17 +1217,26 @@ body{
 					}
 				}
 				&:not(.swiper-slide-active){
-					margin-right: 0;
-					margin-left: vw(40);
-					.inner-flex{
-						.left{
-							width: vw(355);
+					@media all and (min-width: 1025px) {
+						margin-right: 0;
+						margin-left: vw(40);
+						.inner-flex{
+							.left{
+								width: vw(355);
+							}
+							.right{
+								width: 0;
+								padding-left: 0;
+								transform: scale(0);
+								opacity: 0;
+							}
 						}
+					}
+					.inner-flex{
 						.right{
-							width: 0;
-							padding-left: 0;
-							transform: scale(0);
-							opacity: 0;
+							@include media((
+											opacity: (md: 0),
+							));
 						}
 					}
 				}
@@ -816,6 +1256,9 @@ body{
 				}
 				&:last-child{
 					margin-right: vw(1320) !important;
+					@include media((
+									margin-right: (md: vw2(40) !important),
+					));
 					.inner-flex {
 						.right {
 							.control{
@@ -836,19 +1279,36 @@ body{
 
 .section-5{
 	padding-top: vw(55);
+	@include media((
+					padding-top: (md: vw2(65)),
+	));
 	.text{
 		width: vw(985);
+		@include media((
+						width: (md: auto),
+		));
 	}
 	.flex-block{
 		margin-top: vw(60);
 		display: flex;
 		align-items: flex-start;
+		@include media((
+						margin-top: (md: vw2(20)),
+						display: (md: block),
+		));
 		.left{
 			width: vw(575);
 			margin-top: vw(86);
+			@include media((
+							width: (md: auto),
+							margin-top: (md: 0),
+			));
 			.img{
 				width: 100%;
 				margin-top: vw(140);
+				@include media((
+								display: (md: none),
+				));
 				img{
 					width: 100%;
 					display: block;
@@ -858,6 +1318,11 @@ body{
 		.right{
 			margin-left: vw(107);
 			width: vw(624);
+			@include media((
+							margin-left: (md: 0),
+							margin-top: (md: vw2(32)),
+							width: (md: auto),
+			));
 			.img{
 				width: 100%;
 				img{
@@ -872,6 +1337,9 @@ body{
 .to-top-block{
 	margin-top: vw(70);
 	text-align: center;
+	@include media((
+					margin-top: (md: vw2(16)),
+	));
 	.to-top{
 		display: inline-block;
 		img{
@@ -879,6 +1347,9 @@ body{
 			vertical-align: middle;
 			width: vw(61);
 			transition: transform 0.2s ease;
+			@include media((
+							width: (md: vw2(33)),
+			));
 		}
 		span{
 			display: inline-block;
@@ -886,6 +1357,10 @@ body{
 			margin-left: vw(15);
 			color: #ffffff;
 			font-size: vw(30);
+			@include media((
+							margin-left: (md: vw2(12)),
+							font-size: (md: vw2(16)),
+			));
 		}
 		&:hover{
 			img{
@@ -897,9 +1372,15 @@ body{
 
 .copy{
 	padding: vw(80) 0 vw(10);
+	@include media((
+					padding: (md: vw2(24) 0 vw2(10)),
+	));
 	.text{
 		text-align: center;
 		color: #ffffff;
 		font-size: vw(21);
+		@include media((
+						font-size: (md: vw2(16)),
+		));
 	}
 }

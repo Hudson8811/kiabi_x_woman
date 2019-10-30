@@ -155,6 +155,14 @@ $(window).on('load', function() {
             nextEl: '.button-next',
             prevEl: '.button-prev',
         },
+        breakpoints: {
+            0: {
+                autoHeight: true
+            },
+            1024: {
+                autoHeight: false,
+            },
+        },
         on:{
             reachBeginning: function () {
             },

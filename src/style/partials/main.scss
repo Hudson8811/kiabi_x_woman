@@ -331,6 +331,7 @@ body{
 		}
 		&.steps{
 			user-select: none;
+			display: none;
 			.box-solid{
 				.inner-box{
 					.step-2{
@@ -357,7 +358,7 @@ body{
 					}
 					.step-3{
 						text-align: center;
-						display: flex;
+						display: none;
 						flex-direction: column;
 						align-items: center;
 						user-select: none;
@@ -367,6 +368,8 @@ body{
 							font-weight: 700;
 							text-transform: uppercase;
 							position: relative;
+							width: vw(500);
+							text-align: left;
 							&::before{
 								content: "";
 								display: block;
@@ -422,6 +425,7 @@ body{
 						}
 					}
 					.step-4{
+						display: none;
 						.title{
 							color: #ffffff;
 							font-size: vw(66);
@@ -508,6 +512,7 @@ body{
 						}
 					}
 					.step-5{
+						display: none;
 						.title{
 							text-align: center;
 							color: #ffffff;

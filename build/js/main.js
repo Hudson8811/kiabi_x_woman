@@ -72,10 +72,10 @@ $(document).ready(function() {
 
     });
 
+    end = 0;
 
     function timer() {
-        var end,
-            now=Date.now,
+        var now=Date.now,
             raf=window.requestAnimationFrame,
             duration=60000,//MS
             out=document.getElementById('timer');
@@ -113,12 +113,14 @@ $(document).ready(function() {
             countQuestions = quests.test.length;
             $('#current').html(currentQuestion);
 
-            questId = quests.test[0].id;
+            //questId = quests.test[0].id;
             var quest = quests.test[0].quest;
             $('.question .text').html(quest);
         });
         timer();
     }
+
+    testEnded = 0;
     
     function nextQuest() {
         currentQuestion++;
@@ -127,28 +129,115 @@ $(document).ready(function() {
             var quest = quests.test[currentQuestion-1].quest;
             $('.question .text').html(quest);
         } else {
+            testEnded = 1;
             testEnd();
         }
     }
 
+    testResults =[];
+
     $('.step-3 .btns button').click(function () {
-        var ans = 0;
-        if ($(this).hasClass('no-btn')){
-            ans = 0;
-        } else {
-            ans = 1;
+        if (currentQuestion <= countQuestions) {
+            if ($(this).hasClass('no-btn')) {
+                testResults.push(1);
+            } else {
+                testResults.push(2);
+            }
+            nextQuest();
         }
-        nextQuest();
     });
 
+
     function testEnd() {
+        var now=Date.now,
+            c = end - now();
+
+        if (c < 0) c = 0;
+
+        if (testEnded == 1) {
+            $('.step-4 .title').html('Тест пройден');
+        }
+
+        var resultSend = JSON.stringify( testResults );
+        $.ajax({
+            type: "POST",
+            url: "/save_result/",
+            //отправка ответов и оставшегося времени в милиссекундах
+            data: { ansver : resultSend, timer: c },
+            success: function(data) {
+
+                //ответ от сервера
+                var parse = JSON.parse(data);
+                var results = parse.share;
+                var info = parse.info;
+                reit = parse.reit;
+
+                //data на блок share
+                $('.step-4 .social-block').attr('data-url', results[0].url);
+                $('.step-4 .social-block').attr('data-image', results[0].image);
+                $('.step-4 .social-block').attr('data-title', results[0].title);
+                $('.step-4 .social-block').attr('data-description', results[0].description);
+
+                //количество правильных
+                var score = info[0].score;
+                $('.step-4 .result .score').html(score);
+                if (score == 1) $('.step-4 .result .text').html('правильный <br>ответ');
+                if (score == 2 || score == 3 || score == 4) $('.step-4 .result .text').html('правильных <br>ответа');
+
+                //позиция
+                var position = info[0].position;
+                $('.step-4 .position').html(position);
+
+                //таблица рейтинга
+                countReit = reit[0].length;
+                goPage(1);
+
+                //пагинация
+                pages = Math.ceil((countReit+1)/15);
+                if (pages > 1){
+                    var pagiHtml = '';
+                    pagiHtml = pagiHtml+ '<a href="javascript:;" class="arrow prev"></a>';
+
+                    for (i = 1; i < pages; i++) {
+                        var active = '';
+                        if (i == 1) active = 'active';
+                        pagiHtml = pagiHtml+ '<a href="javascript:;" class="number '+active+'" data-page="'+i+'">'+i+'</a>';
+                    }
+                    pagiHtml = pagiHtml+ '<a href="javascript:;" class="arrow next"></a>';
+                }
+                $('.step-5 .pagi').html(pagiHtml);
+            }
+        });
+
+
+
         $('.step-3').fadeOut(100,function () {
             $('.step-4').fadeIn(100, function () {
                 $('#getScore').click(function () {
                     $('.step-4').fadeOut(300,function () {
                         $('.step-5').fadeIn(300, function (){
                             $('.pagi a').click(function () {
-                                goPage(this);
+                                var dataPage = 1;
+                                if (!$(this).hasClass('active') && $(this).hasClass('number')){
+                                    $(this).addClass('active').siblings().removeClass('active');
+                                    dataPage = $(this).data('page');
+                                    goPage(dataPage);
+                                }
+                                if ($(this).hasClass('arrow')){
+                                    if ($(this).hasClass('prev')){
+                                        if ($('.pagi a.number.active').data('page') != 1){
+                                            $('.pagi a.number.active').prev().addClass('active').siblings().removeClass('active');
+                                            dataPage = $('.pagi a.number.active').data('page');
+                                            goPage(dataPage);
+                                        }
+                                    } else {
+                                        if ($('.pagi a.number.active').data('page') != pages){
+                                            $('.pagi a.number.active').next().addClass('active').siblings().removeClass('active');
+                                            dataPage = $('.pagi a.number.active').data('page');
+                                            goPage(dataPage);
+                                        }
+                                    }
+                                }
                             });
                         });
                     });
@@ -157,8 +246,18 @@ $(document).ready(function() {
         });
     }
 
-    function goPage(elem){
-
+    function goPage(page){
+        var outHtml = '<table><tr><th>место</th><th>имя и фамилия</th><th>время</th><th>правильные <br>ответы</th></tr>';
+        var targetReit = (page * 15);
+        var startReit = (page * 15) - 15;
+        if (countReit < targetReit - 1) {
+            targetReit = countReit;
+        }
+        for (i = startReit; i < targetReit-1; i++) {
+            outHtml = outHtml+ '<tr><td>'+(i+1)+'</td><td>'+reit[i].name+'</td><td>'+reit[i].time+'</td><td>'+reit[i].correct+'</td></tr>';
+        }
+        outHtml = outHtml+ '</table>';
+        $('.step-5 .table').html(outHtml);
     }
 
 
@@ -172,7 +271,6 @@ $(document).ready(function() {
     function handleTimer() {
         if(count === 0) {
             clearInterval(timer3);
-            console.log(count);
             endCountdown();
         } else {
             $('.countdown').html(count);

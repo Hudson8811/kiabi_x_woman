@@ -168,12 +168,13 @@ $(document).ready(function() {
 
                 //ответ от сервера
                 var parse = JSON.parse(data);
-                var results = parse.share;
-                var info = parse.info;
-                reit = parse.reit;
+                var results = parse.results;
+                var share = results[0].share;
+                var info = results[1].info;
+                reit = results[2].reit;
 
                 //data на блок share
-                $('.step-4 .social-block').attr('data-url', results[0].url);
+                $('.step-4 .social-block').attr('data-url', share[0].url);
                 $('.step-4 .social-block').attr('data-image', results[0].image);
                 $('.step-4 .social-block').attr('data-title', results[0].title);
                 $('.step-4 .social-block').attr('data-description', results[0].description);
@@ -189,16 +190,16 @@ $(document).ready(function() {
                 $('.step-4 .position').html(position);
 
                 //таблица рейтинга
-                countReit = reit[0].length;
+                countReit = reit.length;
                 goPage(1);
-
                 //пагинация
                 pages = Math.ceil((countReit+1)/15);
+
                 if (pages > 1){
                     var pagiHtml = '';
                     pagiHtml = pagiHtml+ '<a href="javascript:;" class="arrow prev"></a>';
 
-                    for (i = 1; i < pages; i++) {
+                    for (i = 1; i <= pages; i++) {
                         var active = '';
                         if (i == 1) active = 'active';
                         pagiHtml = pagiHtml+ '<a href="javascript:;" class="number '+active+'" data-page="'+i+'">'+i+'</a>';
@@ -250,14 +251,18 @@ $(document).ready(function() {
         var outHtml = '<table><tr><th>место</th><th>имя и фамилия</th><th>время</th><th>правильные <br>ответы</th></tr>';
         var targetReit = (page * 15);
         var startReit = (page * 15) - 15;
-        if (countReit < targetReit - 1) {
+        if (countReit < targetReit) {
             targetReit = countReit;
         }
-        for (i = startReit; i < targetReit-1; i++) {
+        for (i = startReit; i < targetReit; i++) {
             outHtml = outHtml+ '<tr><td>'+(i+1)+'</td><td>'+reit[i].name+'</td><td>'+reit[i].time+'</td><td>'+reit[i].correct+'</td></tr>';
         }
         outHtml = outHtml+ '</table>';
         $('.step-5 .table').html(outHtml);
+        $('html,body').animate({
+                scrollTop: $('.section-2').offset().top
+            }, 300
+        );
     }
 
 

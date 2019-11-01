@@ -10,4 +10,5 @@
 
 /* my scripts */
 
+//= partials/auth.js
 //= partials/main.js

@@ -327,6 +327,41 @@ $(document).ready(function() {
             }, 500
         );
     });
+
+    window.auth = function (data) {
+        $('html,body').animate({
+                scrollTop: $('.section-2').offset().top
+            }, 500
+        );
+        $('.step-1').fadeOut(500,function () {
+            $('.steps').fadeIn(500);
+            timer3 = setInterval(function() { handleTimer(count); }, 1000);
+        });
+        /*
+        $.ajax({
+            type: "POST",
+            url: "/authorize/",
+            data: data,
+            success: function(data) {
+                var parse = JSON.parse(data);
+                if (parse.result == 1) {
+                    $('html,body').animate({
+                            scrollTop: $('.section-2').offset().top
+                        }, 500
+                    );
+                    $('.step-1').fadeOut(500,function () {
+                        $('.steps').fadeIn(500);
+                        timer3 = setInterval(function() { handleTimer(count); }, 1000);
+                    });
+                } else {
+                    //вернулся 0
+                }
+            },
+            error: function () {
+                alert('Ошибка авторизации для прохождения теста');
+            }
+        });*/
+    }
 });
 
 
@@ -364,30 +399,3 @@ $(window).on('load', function() {
     });
 
 });
-
-
-window.auth = function (data) {
-    $.ajax({
-        type: "POST",
-        url: "/authorize/",
-        data: data,
-        success: function(data) {
-            var parse = JSON.parse(data);
-            if (parse.result == 1) {
-                $('html,body').animate({
-                        scrollTop: $('.section-2').offset().top
-                    }, 500
-                );
-                $('.step-1').fadeOut(500,function () {
-                    $('.steps').fadeIn(500);
-                    timer3 = setInterval(function() { handleTimer(count); }, 1000);
-                });
-            } else {
-                //вернулся 0
-            }
-        },
-        error: function () {
-            alert('Ошибка авторизации для прохождения теста');
-        }
-    });
-}

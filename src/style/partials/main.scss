@@ -548,6 +548,17 @@ body{
 										font-size: (md: vw2(16)),
 						));
 					}
+
+					.info{
+						color: #ffffff;
+						font-size: vw(20);
+						text-align: center;
+						margin-top: vw(25);
+						@include media((
+										font-size: (md: vw2(14)),
+										margin-top: (md: vw2(20)),
+						));
+					}
 				}
 			}
 

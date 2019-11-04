@@ -306,7 +306,8 @@ $(document).ready(function() {
                 if (parse.result == 1) {
                     getData();
                 } else {
-                    //вернулся 0
+                    $('.to-play').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                    $('.step-4 .share').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
                 }
             },
             error: function () {

@@ -83,6 +83,7 @@ $(document).ready(function() {
                         $('.step-2 .countdown, .question .text').html('');
                         $('#timer').html('01:00:00');
                         $('#current').html('1');
+                        count = 3;
                         timer3 = setInterval(function() { handleTimer(count); }, 1000);
                     });
                 } else {

@@ -55,6 +55,11 @@ body{
 		span,a{
 			color: #ffffff;
 			background-color: #e41529;
+			transition: 0.3s ease;
+			&:hover{
+				color: #e41529;
+				background-color: transparent;
+			}
 		}
 	}
 }
@@ -433,27 +438,31 @@ body{
 					width: 100%;
 				}
 				.marquee-1{
-					left: vw(42);
+					left: vw(44);
 					top: 0;
-					z-index: 1;
+					z-index: 3;
 					@include media((
-									left: (md: vw2(26)),
+									left: (md: vw2(24)),
 					));
 				}
 				.marquee-2{
 					transform: rotate(90deg);
 					transform-origin: right  top;
 					left: 0;
-					bottom: 0;
-					z-index: 2;
+					top: vw(88);
+					z-index: 3;
+					@include media((
+									top: (md: vw2(48)),
+					));
 				}
 				.marquee-3{
 					transform: rotate(180deg);
-					right: vw(42);
+					right: vw(44);
 					bottom: 0;
 					z-index: 3;
+					overflow: hidden;
 					@include media((
-									right: (md: vw2(26)),
+									right: (md: vw2(24)),
 					));
 				}
 				.marquee-4{
@@ -540,6 +549,11 @@ body{
 
 				.auth-block{
 					display: none;
+					justify-content: space-around;
+					align-items: center;
+					@include media((
+									flex-direction: (md: column),
+					));
 					.text{
 						color: #ffffff;
 						font-size: vw(26);
@@ -549,11 +563,16 @@ body{
 						));
 					}
 
+					.social-block{
+						margin-top: 0;
+						@include media((
+										margin-top: (md: vw2(11)),
+						));
+					}
 					.info{
 						color: #ffffff;
 						font-size: vw(20);
 						text-align: center;
-						margin-top: vw(25);
 						@include media((
 										font-size: (md: vw2(14)),
 										margin-top: (md: vw2(20)),
@@ -892,6 +911,11 @@ body{
 											));
 										}
 									}
+									&.current{
+										td{
+											color: #e41529;
+										}
+									}
 								}
 							}
 						}
@@ -1125,7 +1149,7 @@ body{
 		));
 		.swiper-wrapper{
 			.swiper-slide{
-				margin-right: vw(100);
+				margin-right: vw(50);
 				margin-left: vw(74);
 				transition: 0.8s ease;
 				width: auto;
@@ -1157,7 +1181,7 @@ body{
 					}
 					.right{
 						padding-left: vw(58);
-						width: vw(300);
+						width: vw(350);
 						display: flex;
 						flex-direction: column;
 						justify-content: center;
@@ -1178,7 +1202,7 @@ body{
 						));
 						.title{
 							font-weight: 700;
-							width: vw(242);
+							width: vw(350);
 							@include media((
 											width: (md: auto),
 											font-size: (md: vw2(22)),
@@ -1192,7 +1216,7 @@ body{
 							}
 						}
 						.text{
-							width: vw(242);
+							width: vw(350);
 							margin-top: 1em;
 							@include media((
 											width: (md: auto),

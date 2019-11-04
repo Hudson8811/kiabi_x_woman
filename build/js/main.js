@@ -88,10 +88,12 @@ window.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function() {
 
     $('.to-play .btn-light').hover(function () {
+       $('.auth-block').css("display", "flex").hide();
        $(this).fadeOut(300,function () {
-           $('.auth-block').slideDown(400);
+           $('.auth-block').fadeIn(300);
        });
     });
+
 
     $('.marquee').marquee({
         duration: 15000,
@@ -100,7 +102,17 @@ $(document).ready(function() {
         direction: 'right',
         duplicated: true,
         startVisible:true
+    });
 
+    $(window).resize(function () {
+        $('.marquee').marquee('destroy').marquee({
+            duration: 15000,
+            gap: 0,
+            delayBeforeStart: 0,
+            direction: 'right',
+            duplicated: true,
+            startVisible:true
+        });
     });
 
     end = 0;
@@ -217,14 +229,17 @@ $(document).ready(function() {
                 if (score == 2 || score == 3 || score == 4) $('.step-4 .result .text').html('правильных <br>ответа');
 
                 //позиция
-                var position = info[0].position;
-                $('.step-4 .position').html(position);
+                positionNum = info[0].position;
+                $('.step-4 .position').html(positionNum);
 
                 //таблица рейтинга
                 countReit = reit.length;
-                goPage(1);
                 //пагинация
                 pages = Math.ceil((countReit+1)/15);
+
+                var goToPage = Math.ceil(positionNum/15);
+
+                goPage(goToPage);
 
                 if (pages > 1){
                     var pagiHtml = '';
@@ -232,7 +247,7 @@ $(document).ready(function() {
 
                     for (i = 1; i <= pages; i++) {
                         var active = '';
-                        if (i == 1) active = 'active';
+                        if (i == goToPage) active = 'active';
                         pagiHtml = pagiHtml+ '<a href="javascript:;" class="number '+active+'" data-page="'+i+'">'+i+'</a>';
                     }
                     pagiHtml = pagiHtml+ '<a href="javascript:;" class="arrow next"></a>';
@@ -246,6 +261,7 @@ $(document).ready(function() {
         $('.step-3').fadeOut(100,function () {
             $('.step-4').fadeIn(100, function () {
                 $('#getScore').click(function () {
+
                     $('.step-4').fadeOut(300,function () {
                         $('.step-5').fadeIn(300, function (){
                             $('.pagi a').click(function () {
@@ -286,7 +302,9 @@ $(document).ready(function() {
             targetReit = countReit;
         }
         for (i = startReit; i < targetReit; i++) {
-            outHtml = outHtml+ '<tr><td>'+(i+1)+'</td><td>'+reit[i].name+'</td><td>'+reit[i].time+'</td><td>'+reit[i].correct+'</td></tr>';
+            var positionClass = '';
+            if (positionNum == (i+1)) positionClass = 'class="current"';
+            outHtml = outHtml+ '<tr '+positionClass+'><td>'+(i+1)+'</td><td>'+reit[i].name+'</td><td>'+reit[i].time+'</td><td>'+reit[i].correct+'</td></tr>';
         }
         outHtml = outHtml+ '</table>';
         $('.step-5 .table').html(outHtml);

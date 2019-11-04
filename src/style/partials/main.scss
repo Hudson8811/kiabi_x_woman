@@ -965,6 +965,16 @@ body{
 			}
 		}
 	}
+
+	.noMore{
+		color: #ffffff;
+		font-size: vw(38);
+		font-weight: 700;
+		text-align: center;
+		@include media((
+						font-size: (md: vw2(25)),
+		));
+	}
 }
 
 

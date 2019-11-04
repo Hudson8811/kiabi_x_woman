@@ -63,16 +63,46 @@ $(document).ready(function() {
     countQuestions = 1;
     quests = '';
 
-    function testStart() {
-        $.getJSON('test.json', function(data) {
-            quests = data;
-            countQuestions = quests.test.length;
-            $('#current').html(currentQuestion);
-
-            //questId = quests.test[0].id;
-            var quest = quests.test[0].quest;
-            $('.question .text').html(quest);
+    function getData(social = '') {
+        $.ajax({
+            type: "POST",
+            url: "/get_test/",
+            data: { social : social },
+            success: function(data) {
+                if (data.length){
+                    var parse = JSON.parse(data);
+                    quests = parse;
+                    $('html,body').animate({
+                            scrollTop: $('.section-2').offset().top
+                        }, 500
+                    );
+                    $('.step-1').fadeOut(500,function () {
+                        $('.steps .box-solid .inner-box > div').hide();
+                        $('.step-2').show();
+                        $('.steps').fadeIn(500);
+                        $('.step-2 .countdown, .question .text').html('');
+                        $('#timer').html('01:00:00');
+                        $('#current').html('1');
+                        timer3 = setInterval(function() { handleTimer(count); }, 1000);
+                    });
+                } else {
+                    $('.to-play').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                    $('.step-4 .share').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                }
+            },
+            error: function () {
+                alert('Ошибка запроса вопросов');
+            }
         });
+    }
+
+    function testStart() {
+        countQuestions = quests.test.length;
+        $('#current').html(currentQuestion);
+
+        //questId = quests.test[0].id;
+        var quest = quests.test[0].quest;
+        $('.question .text').html(quest);
         timer();
     }
 
@@ -103,6 +133,11 @@ $(document).ready(function() {
         }
     });
 
+    $('.share .social-block a').click(function () {
+        event.preventDefault();
+        var social = $(this).data('share');
+        getData(social);
+    });
 
     function testEnd() {
         var now=Date.now,
@@ -260,14 +295,7 @@ $(document).ready(function() {
     });
 
     window.auth = function (data) {
-        $('html,body').animate({
-                scrollTop: $('.section-2').offset().top
-            }, 500
-        );
-        $('.step-1').fadeOut(500,function () {
-            $('.steps').fadeIn(500);
-            timer3 = setInterval(function() { handleTimer(count); }, 1000);
-        });
+        getData();
         /*
         $.ajax({
             type: "POST",
@@ -276,14 +304,7 @@ $(document).ready(function() {
             success: function(data) {
                 var parse = JSON.parse(data);
                 if (parse.result == 1) {
-                    $('html,body').animate({
-                            scrollTop: $('.section-2').offset().top
-                        }, 500
-                    );
-                    $('.step-1').fadeOut(500,function () {
-                        $('.steps').fadeIn(500);
-                        timer3 = setInterval(function() { handleTimer(count); }, 1000);
-                    });
+                    getData();
                 } else {
                     //вернулся 0
                 }
@@ -293,6 +314,7 @@ $(document).ready(function() {
             }
         });*/
     }
+
 });
 
 

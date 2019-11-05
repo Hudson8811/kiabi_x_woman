@@ -404,17 +404,16 @@ $(document).ready(function() {
         );
     });
 
-    window.auth = function (data) {
+
+    function getUser() {
         $.ajax({
             type: "POST",
             url: "/get_user/",
-            data: data,
-            success: function(data) {
-                if (data.length) {
-                    var parse = JSON.parse(data);
+            data: '',
+            success: function(returnData) {
+                if (returnData.length) {
+                    var parse = JSON.parse(returnData);
                     if (parse.result == 1) {
-                        getData();
-                    } else {
                         $('.to-play').html('');
                         $('.step-4').addClass('no-info');
                         $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');
@@ -423,14 +422,25 @@ $(document).ready(function() {
                         $('.steps .box-solid .inner-box > div').hide();
                         $('.step-4').show();
                     }
-                } else {
-                    $('.to-play').html('');
-                    $('.step-4').addClass('no-info');
-                    $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');
-                    $('.step-1').hide();
-                    $('.steps').show();
-                    $('.steps .box-solid .inner-box > div').hide();
-                    $('.step-4').show();
+                }
+            },
+            error: function () {
+                alert('Ошибка проверки авторизации');
+            }
+        });
+    }
+
+    getUser();
+
+    window.auth = function (data) {
+        $.ajax({
+            type: "POST",
+            url: "/authorize/",
+            data: data,
+            success: function(data) {
+                var parse = JSON.parse(data);
+                if (parse.result == 1) {
+                    getData();
                 }
             },
             error: function () {
@@ -457,10 +467,12 @@ $(window).on('load', function() {
         },
         breakpoints: {
             0: {
-                autoHeight: true
+                autoHeight: true,
+                loop: true
             },
             1024: {
                 autoHeight: false,
+                loop: false
             },
         },
         on:{

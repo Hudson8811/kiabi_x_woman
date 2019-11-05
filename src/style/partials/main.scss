@@ -56,7 +56,14 @@ body{
 			color: #ffffff;
 			background-color: #e41529;
 			transition: 0.3s ease;
-			&:hover{
+			white-space: nowrap;
+			@media all and (min-width: 1025px) {
+				&:hover {
+					color: #e41529;
+					background-color: transparent;
+				}
+			}
+			&:active{
 				color: #e41529;
 				background-color: transparent;
 			}
@@ -101,6 +108,12 @@ body{
 			));
 		}
 		&:hover{
+			@media all and (min-width: 1025px) {
+				color: #ffffff;
+				background-color: #e41529;
+			}
+		}
+		&:active{
 			color: #ffffff;
 			background-color: #e41529;
 		}
@@ -299,6 +312,9 @@ body{
 	.marquee-2{
 		transform: rotate(-5deg);
 		z-index: 2;
+		@include media((
+						top: (md: vw2(-15)),
+		));
 	}
 }
 
@@ -542,6 +558,12 @@ body{
 									height: (md: vw2(56)),
 					));
 					&:hover{
+						@media all and (min-width: 1025px) {
+							background-color: #e41529;
+							color: #ffffff;
+						}
+					}
+					&:active{
 						background-color: #e41529;
 						color: #ffffff;
 					}
@@ -591,6 +613,22 @@ body{
 										font-size: (md: vw2(14)),
 										margin-top: (md: vw2(20)),
 						));
+						a{
+							color: #ffffff;
+							background-color: #e41529;
+							transition: 0.3s ease;
+							white-space: nowrap;
+							&:hover{
+								@media all and (min-width: 1025px) {
+									color: #e41529;
+									background-color: transparent;
+								}
+							}
+							&:active{
+								color: #e41529;
+								background-color: transparent;
+							}
+						}
 					}
 				}
 			}
@@ -735,6 +773,14 @@ body{
 												font-size: (md: vw2(22)),
 								));
 								&:hover{
+									@media all and (min-width: 1025px) {
+										background-color: #e41529;
+										@include media((
+														background-color: (md: transparent),
+										));
+									}
+								}
+								&:active{
 									background-color: #e41529;
 									@include media((
 													background-color: (md: transparent),
@@ -1171,7 +1217,7 @@ body{
 		transform: rotate(-6deg);
 		z-index: 3;
 		@include media((
-						top: (md: vw2(20)),
+						top: (md: vw2(85)),
 						position: (md: relative),
 		));
 	}
@@ -1228,7 +1274,7 @@ body{
 						transition: 0.8s ease;
 						@include media((
 										width: (md: 100%),
-										height: (md: auto),
+										height: (md: vw2(391)),
 						));
 						img{
 							width: 100%;
@@ -1266,10 +1312,22 @@ body{
 											font-size: (md: vw2(22)),
 											order: (md: 2),
 							));
-							a{
+							a {
 								color: #ffffff;
-								&:hover{
-									color: #e41529;
+								&:hover {
+									@media all and (min-width: 1025px) {
+										color: #e41529;
+									}
+								}
+								@media all and (max-width: 1024px) {
+									background-color: #e41529;
+									transition: 0.3s ease;
+									font-weight: 400;
+
+									&:active {
+										color: #e41529;
+										background-color: transparent;
+									}
 								}
 							}
 						}
@@ -1309,28 +1367,45 @@ body{
 											margin-bottom: (md: vw2(16)),
 											width: (md: vw2(96)),
 											order: (md: 1),
+											opacity: (md: 0),
+											pointer-events: (md: none),
+
 							));
 							>div{
 								cursor: pointer;
 								width: vw(61);
 								height: vw(61);
-								display: block;
+								display: flex;
+								align-items: center;
+								justify-content: center;
 								background-position: center center;
 								background-repeat: no-repeat;
 								background-size: contain;
-								transition: transform 0.2s ease;
+								transition: 0.3s ease;
+								background: #e41529;
+								border-radius: 100%;
 								@include media((
 												width: (md: vw2(39)),
 												height: (md: vw2(39)),
 								));
-								&:hover{
-									transform: scale(1.1);
+								svg{
+									width: vw(35);
+									polygon{
+										transition: 0.3s ease;
+									}
 								}
 								&.button-next{
-									background-image: url("../img/arr-r.png");
+									svg{
+										transform: scaleX(-1);
+									}
 								}
 								&.button-prev{
-									background-image: url("../img/arr-l.png");
+								}
+								&:hover{
+									background: #ffffff;
+									svg polygon{
+										fill: #e41529;
+									}
 								}
 							}
 						}
@@ -1393,6 +1468,52 @@ body{
 				}
 			}
 		}
+		>.control{
+			justify-content: space-between;
+			display: none;
+			position: absolute;
+			left: vw2(20);
+			top: vw2(406);
+			width: vw2(96);
+			z-index: 50;
+			@include media((
+							display: (md: flex),
+			));
+			>div{
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				width: vw2(39);
+				height: vw2(39);
+				transition: 0.3s ease;
+				background: #e41529;
+				border-radius: 100%;
+				svg{
+					width: vw2(20);
+					polygon{
+						transition: 0.3s ease;
+					}
+				}
+				&.button-next{
+					svg{
+						transform: scaleX(-1);
+					}
+				}
+				&.button-prev{
+				}
+				&:active{
+					background: #ffffff;
+					svg polygon{
+						fill: #e41529;
+					}
+				}
+			}
+
+		}
 	}
 }
 
@@ -1400,7 +1521,7 @@ body{
 .section-5{
 	padding-top: vw(55);
 	@include media((
-					padding-top: (md: vw2(65)),
+					padding-top: (md: vw2(30)),
 	));
 	.text{
 		width: vw(985);
@@ -1461,19 +1582,42 @@ body{
 					margin-top: (md: vw2(16)),
 	));
 	.to-top{
-		display: inline-block;
-		img{
-			display: inline-block;
-			vertical-align: middle;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: max-content;
+		margin: 0 auto;
+		.img{
+			cursor: pointer;
 			width: vw(61);
-			transition: transform 0.2s ease;
+			height: vw(61);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			transition: 0.3s ease;
+			background: #e41529;
+			border-radius: 100%;
 			@include media((
 							width: (md: vw2(33)),
+							height: (md: vw2(33)),
 			));
+			svg{
+				width: vw(35);
+				transform: rotate(90deg);
+				@include media((
+								width: (md: vw2(20)),
+				));
+				polygon{
+					transition: 0.3s ease;
+				}
+			}
 		}
+
 		span{
 			display: inline-block;
-			vertical-align: middle;
 			margin-left: vw(15);
 			color: #ffffff;
 			font-size: vw(30);
@@ -1482,9 +1626,21 @@ body{
 							font-size: (md: vw2(16)),
 			));
 		}
+
 		&:hover{
-			img{
-				transform: scale(1.1);
+			.img{
+				background: #ffffff;
+				svg polygon{
+					fill: #e41529;
+				}
+			}
+		}
+		&:active{
+			.img{
+				background: #ffffff;
+				svg polygon{
+					fill: #e41529;
+				}
 			}
 		}
 	}

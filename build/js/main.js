@@ -182,8 +182,12 @@ $(document).ready(function() {
                 } else {
                     $('.to-play').html('');
                     if (social != ''){
-                        $('.step-4 .no-block').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                        $('.step-4 .no-block').html('<div class="noMore">Извините, но вы использовали эту попытку!</div>');
                         $('.step-4 .share').hide();
+                        setTimeout(function () {
+                            $('.step-4 .no-block').html('');
+                            $('.step-4 .share').show();
+                        }, 5000);
                     } else {
                         $('.step-4').addClass('no-info');
                         $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');

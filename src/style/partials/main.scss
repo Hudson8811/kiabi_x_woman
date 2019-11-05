@@ -565,9 +565,23 @@ body{
 
 					.social-block{
 						margin-top: 0;
+						position: relative;
 						@include media((
 										margin-top: (md: vw2(11)),
 						));
+						#loader{
+							width: 100%;
+							height: 100%;
+							background: #000012 url("../img/loader.svg") center center no-repeat;
+							background-size: contain;
+							position: absolute;
+							left: 0;
+							top: 0;
+							display: none;
+							&.is-visible{
+								display: block;
+							}
+						}
 					}
 					.info{
 						color: #ffffff;
@@ -828,9 +842,41 @@ body{
 							}
 
 						}
+						&.no-info{
+							.title, .flex-block{
+								display: none;
+							}
+						}
 					}
 					.step-5{
 						display: none;
+						position: relative;
+						#close-reit{
+							position: absolute;
+							right: vw(10);
+							top: vw(10);
+							display: block;
+							width: vw(40);
+							height: vw(40);
+							cursor: pointer;
+							svg{
+								width: 100%;
+								height: 100%;
+								display: block;
+								object-fit: contain;
+							}
+							@include media((
+											width: (md: vw2(15)),
+											height: (md: vw2(15)),
+											right: (md: vw2(15)),
+											top: (md: vw2(0)),
+							));
+							&:hover{
+								svg path{
+									fill: #e41529;
+								}
+							}
+						}
 						.title{
 							text-align: center;
 							color: #ffffff;
@@ -971,8 +1017,10 @@ body{
 		font-size: vw(38);
 		font-weight: 700;
 		text-align: center;
+		margin-top: vw(65);
 		@include media((
 						font-size: (md: vw2(25)),
+						margin-top: (md: vw2(38)),
 		));
 	}
 }

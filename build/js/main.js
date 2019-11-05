@@ -69,6 +69,8 @@ window.addEventListener('DOMContentLoaded', function () {
     while (target !== this) {
       if (target.hasAttribute('data-auth')) {
         e.preventDefault()
+        let loader = document.getElementById('loader')
+        loader.classList.add('is-visible')
         const url = origin + '/' + target.getAttribute('data-auth') + '.php'
         openedWindow = window.open(url, 'Авторизация', 'width=700,height=500,resizable=yes,scrollbars=no,status=yes')
         return
@@ -82,6 +84,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (e.origin === origin && data.social) {
       openedWindow.close()
       window.auth && window.auth(data)
+      let loader = document.getElementById('loader')
+      loader.classList.remove('is-visible')
     }
   })
 })
@@ -170,12 +174,25 @@ $(document).ready(function() {
                         $('.step-2 .countdown, .question .text').html('');
                         $('#timer').html('01:00:00');
                         $('#current').html('1');
+                        $('.step-4').removeClass('no-info');
                         count = 3;
+                        currentQuestion = 1;
                         timer3 = setInterval(function() { handleTimer(count); }, 1000);
                     });
                 } else {
-                    $('.to-play').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
-                    $('.step-4 .share').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                    $('.to-play').html('');
+                    if (social != ''){
+                        $('.step-4 .no-block').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                        $('.step-4 .share').hide();
+                    } else {
+                        $('.step-4').addClass('no-info');
+                        $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');
+                    }
+                    $('.step-1').hide();
+                    $('.steps').show();
+                    $('.steps .box-solid .inner-box > div').hide();
+                    $('.step-4').show();
+
                 }
             },
             error: function () {
@@ -323,6 +340,11 @@ $(document).ready(function() {
                                     }
                                 }
                             });
+                            $('#close-reit').click(function () {
+                                $('.step-5').fadeOut(300,function () {
+                                    $('.step-4').fadeIn(300);
+                                });
+                            });
                         });
                     });
                 });
@@ -383,25 +405,38 @@ $(document).ready(function() {
     });
 
     window.auth = function (data) {
-        getData();
-        /*
         $.ajax({
             type: "POST",
-            url: "/authorize/",
+            url: "/get_user/",
             data: data,
             success: function(data) {
-                var parse = JSON.parse(data);
-                if (parse.result == 1) {
-                    getData();
+                if (data.length) {
+                    var parse = JSON.parse(data);
+                    if (parse.result == 1) {
+                        getData();
+                    } else {
+                        $('.to-play').html('');
+                        $('.step-4').addClass('no-info');
+                        $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');
+                        $('.step-1').hide();
+                        $('.steps').show();
+                        $('.steps .box-solid .inner-box > div').hide();
+                        $('.step-4').show();
+                    }
                 } else {
-                    $('.to-play').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
-                    $('.step-4 .share').html('<div class="noMore">Извините, но вы использовали свои попытки!</div>');
+                    $('.to-play').html('');
+                    $('.step-4').addClass('no-info');
+                    $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');
+                    $('.step-1').hide();
+                    $('.steps').show();
+                    $('.steps .box-solid .inner-box > div').hide();
+                    $('.step-4').show();
                 }
             },
             error: function () {
                 alert('Ошибка авторизации для прохождения теста');
             }
-        });*/
+        });
     }
 
 });

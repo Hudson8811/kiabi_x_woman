@@ -7,6 +7,8 @@ window.addEventListener('DOMContentLoaded', function () {
     while (target !== this) {
       if (target.hasAttribute('data-auth')) {
         e.preventDefault()
+        let loader = document.getElementById('loader')
+        loader.classList.add('is-visible')
         const url = origin + '/' + target.getAttribute('data-auth') + '.php'
         openedWindow = window.open(url, 'Авторизация', 'width=700,height=500,resizable=yes,scrollbars=no,status=yes')
         return
@@ -20,6 +22,8 @@ window.addEventListener('DOMContentLoaded', function () {
     if (e.origin === origin && data.social) {
       openedWindow.close()
       window.auth && window.auth(data)
+      let loader = document.getElementById('loader')
+      loader.classList.remove('is-visible')
     }
   })
 })

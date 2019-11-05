@@ -84,6 +84,7 @@ $(document).ready(function() {
                         $('#timer').html('01:00:00');
                         $('#current').html('1');
                         $('.step-4').removeClass('no-info');
+                        $('.step-4 .no-block').html('');
                         count = 3;
                         currentQuestion = 1;
                         timer3 = setInterval(function() { handleTimer(count); }, 1000);

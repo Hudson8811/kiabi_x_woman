@@ -1314,17 +1314,15 @@ body{
 							));
 							a {
 								color: #ffffff;
+								background-color: #e41529;
+								transition: 0.3s ease;
+								font-weight: 400;
+								&:active {
+									color: #e41529;
+									background-color: transparent;
+								}
 								&:hover {
 									@media all and (min-width: 1025px) {
-										color: #e41529;
-									}
-								}
-								@media all and (max-width: 1024px) {
-									background-color: #e41529;
-									transition: 0.3s ease;
-									font-weight: 400;
-
-									&:active {
 										color: #e41529;
 										background-color: transparent;
 									}

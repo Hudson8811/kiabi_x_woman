@@ -154,7 +154,7 @@ $(document).ready(function() {
     countQuestions = 1;
     quests = '';
 
-    function getData(social = '') {
+    function getData(social) {
         $.ajax({
             type: "POST",
             url: "/get_test/",
@@ -445,7 +445,7 @@ $(document).ready(function() {
             success: function(data) {
                 var parse = JSON.parse(data);
                 if (parse.result == 1) {
-                    getData();
+                    getData('');
                 }
             },
             error: function () {

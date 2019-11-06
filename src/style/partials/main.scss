@@ -89,6 +89,7 @@ body{
 		border-radius: 100%;
 		color: #e41529;
 		transition: 0.2s ease;
+		border: none;
 		@include media((
 						width: (md: vw2(40)),
 						height: (md: vw2(40)),
@@ -102,6 +103,7 @@ body{
 		svg{
 			width: vw(36);
 			height: vw(36);
+			pointer-events: none;
 			@include media((
 							width: (md: vw2(20)),
 							height: (md: vw2(20)),
@@ -1272,14 +1274,16 @@ body{
 						width: vw(624);
 						height: vw(936);
 						transition: 0.8s ease;
+						display: flex;
+						align-items: center;
+						justify-content: center;
 						@include media((
 										width: (md: 100%),
 										height: (md: vw2(391)),
 						));
 						img{
 							width: 100%;
-							height: 100%;
-							object-fit: contain;
+							max-height: 100%;
 							display: block;
 						}
 					}

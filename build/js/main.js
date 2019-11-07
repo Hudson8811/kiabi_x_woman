@@ -243,7 +243,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.share .social-block a').click(function () {
+    $('.share .social-block .soc-link').click(function () {
         event.preventDefault();
         var social = $(this).data('share');
         getData(social);

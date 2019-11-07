@@ -419,6 +419,12 @@ $(document).ready(function() {
                 if (returnData.length) {
                     var parse = JSON.parse(returnData);
                     if (parse.result == 1) {
+                        var share = parse.share;
+                        $('.step-4 .social-block').attr('data-url', share.url);
+                        $('.step-4 .social-block').attr('data-image', share.image);
+                        $('.step-4 .social-block').attr('data-title', share.title);
+                        $('.step-4 .social-block').attr('data-description', share.description);
+
                         $('.to-play').html('');
                         $('.step-4').addClass('no-info');
                         $('.step-4 .no-block').html('<div class="noMore">Вы уже проходили тест</div>');

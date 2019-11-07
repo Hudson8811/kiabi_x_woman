@@ -87,6 +87,7 @@ $(document).ready(function() {
                         $('.step-4 .no-block').html('');
                         count = 3;
                         currentQuestion = 1;
+                        testResults =[];
                         timer3 = setInterval(function() { handleTimer(count); }, 1000);
                     });
                 } else {

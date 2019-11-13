@@ -752,8 +752,9 @@ body{
 							display: flex;
 							justify-content: space-between;
 							@include media((
-											width: (md: vw2(205)),
+											width: (md: 100%),
 											margin-top: (md: vw2(12)),
+											justify-content: (md: center),
 							));
 							button{
 								border: none;
@@ -774,6 +775,7 @@ body{
 												width: (md: auto),
 												height: (md: auto),
 												font-size: (md: vw2(22)),
+												margin: (md: 0 vw2(10)),
 								));
 								&:hover{
 									@media all and (min-width: 1025px) {

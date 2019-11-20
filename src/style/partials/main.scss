@@ -1700,4 +1700,12 @@ body{
 						font-size: (md: 30px),
 		));
 	}
+	.info{
+		font-size:  30px;
+		text-align: center;
+		margin-top: 15px;
+		@include media((
+						font-size: (md: 16px),
+		));
+	}
 }

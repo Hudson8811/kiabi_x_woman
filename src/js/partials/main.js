@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $.fancybox.open({
+        src  : '#ended',
+        type : 'inline',
+        modal: true
+    });
+
     $('.to-play .btn-light').hover(function () {
        $('.auth-block').css("display", "flex").hide();
        $(this).fadeOut(300,function () {
